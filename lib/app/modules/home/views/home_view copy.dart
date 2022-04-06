@@ -8,11 +8,11 @@ import 'package:weather_app/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView1 extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Future.delayed(const Duration(seconds: 3)),
+      future: Future.delayed(Duration(seconds: 3)),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
@@ -21,19 +21,17 @@ class HomeView extends GetView<HomeController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Obx(
-                    () => Text(
-                      'HomeView is working in ${controller.regions[0]} + ${controller.province.value} + ${controller.city.value}',
-                      style: const TextStyle(fontSize: 20),
-                    ),
+                  Text(
+                    'HomeView is working in ${controller.regions}',
+                    style: TextStyle(fontSize: 20),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Get.toNamed(Routes.DETAIL_PAGE, arguments: 45);
                     },
-                    child: const Text('get data'),
+                    child: Text('get data'),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 30,
                   ),
                   TextFormField(
@@ -42,14 +40,14 @@ class HomeView extends GetView<HomeController> {
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.cyanAccent,
                           width: 2,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.cyan,
                         ),
                       ),
@@ -58,34 +56,19 @@ class HomeView extends GetView<HomeController> {
                   DropdownSearch<String>(
                       mode: Mode.MENU,
                       showSelectedItems: true,
-                      dropdownSearchDecoration: const InputDecoration(
-                        label: Center(child: Text('Provinsi')),
-                      ),
-                      items: controller.provinceList,
-                      onChanged: (s) {
-                        controller.province.value = s!;
-                        controller.getCityList();
-                        controller.city.value = controller.cityList[0];
-                      }),
-                  Obx(
-                    () => DropdownSearch<String>(
-                      enabled:
-                          (controller.province.value != 'none') ? true : false,
-                      mode: Mode.MENU,
-                      showSelectedItems: true,
-                      dropdownSearchDecoration: const InputDecoration(
-                        label: Center(child: Text('Kota/Kabupaten')),
+                      dropdownSearchDecoration: InputDecoration(
+                        label: Text('country'),
                         hintText: 'choose country',
                       ),
-                      items: controller.cityList,
-                      selectedItem: (controller.cityList.isNotEmpty)
-                          ? controller.city.value
-                          : null,
-                      onChanged: (s) {
-                        controller.city.value = s!;
-                      },
-                    ),
-                  ),
+                      items: [
+                        "Brazil",
+                        "Italia (Disabled)",
+                        "Tunisia",
+                        'Canada'
+                      ],
+                      popupItemDisabled: (String s) => s.startsWith('I'),
+                      onChanged: print,
+                      selectedItem: "Brazil"),
                 ],
               ),
             ),
@@ -93,7 +76,7 @@ class HomeView extends GetView<HomeController> {
         }
         return FutureBuilder(
           future: controller.initState(),
-          builder: (context, snapshot) => const Center(
+          builder: (context, snapshot) => Center(
             child: CircularProgressIndicator(),
           ),
         );
