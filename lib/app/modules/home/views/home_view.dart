@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +10,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Future.delayed(const Duration(seconds: 3)),
+      future: Future.delayed(const Duration(seconds: 4)),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
@@ -21,15 +19,25 @@ class HomeView extends GetView<HomeController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Obx(
-                    () => Text(
-                      'HomeView is working in ${controller.regions[0]} + ${controller.province.value} + ${controller.city.value}',
-                      style: const TextStyle(fontSize: 20),
-                    ),
+                  Text(
+                    // 'HomeView is working in ${controller.regions[0]} + ${controller.province.value} + ${controller.city.value}',
+                    'homeview',
+                    style: const TextStyle(fontSize: 20),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Get.toNamed(Routes.DETAIL_PAGE, arguments: 45);
+                      controller.getCityID();
+                      controller.getDataWeather();
+                      if (controller.cityID != null) {
+                        Get.toNamed(Routes.DETAIL_PAGE,
+                            arguments: controller.cityID);
+                      } else {
+                        Get.defaultDialog(
+                          title: 'ID not found',
+                          middleText: '',
+                          onWillPop: () => Future.delayed(Duration(seconds: 1)),
+                        );
+                      }
                     },
                     child: const Text('get data'),
                   ),

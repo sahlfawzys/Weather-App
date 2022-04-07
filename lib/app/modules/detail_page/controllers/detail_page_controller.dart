@@ -8,8 +8,8 @@ import '../../../data/models/forecast_weather_model.dart';
 
 class DetailPageController extends GetxController {
   ForecastWeather forecast = ForecastWeather();
-  // late int id = Get.arguments;
-  int id = 7780172;
+  int id = 1;
+  String iconUrl = 'http://openweathermap.org/img/wn/10d@2x.png';
 
   Future<void> getDataWeather() async {
     String url_f =
@@ -19,6 +19,8 @@ class DetailPageController extends GetxController {
       print('Data imported');
 
       forecast = ForecastWeather.fromJson(json.decode(response.body));
+      print(forecast.list![0].main!.temp);
+      print(forecast.list![0].weather![0].main);
     } catch (e) {
       print(e);
     }

@@ -71,7 +71,7 @@
     },
     {
         "id": 1213642,
-        "name": "North Sumatra",
+        "name": "Sumatra Utara",
         "state": "",
         "country": "ID",
         "coord": {
@@ -381,7 +381,7 @@
     },
     {
         "id": 1215501,
-        "name": "Kota Banda Aceh",
+        "name": "Banda Aceh",
         "state": "",
         "country": "ID",
         "coord": {
@@ -5401,7 +5401,7 @@
     },
     {
         "id": 1633791,
-        "name": "East Nusa Tenggara",
+        "name": "Nusa Tenggara timur",
         "state": "",
         "country": "ID",
         "coord": {
@@ -5411,7 +5411,7 @@
     },
     {
         "id": 1633792,
-        "name": "West Nusa Tenggara",
+        "name": "Nusa Tenggara barat",
         "state": "",
         "country": "ID",
         "coord": {
@@ -9091,7 +9091,7 @@
     },
     {
         "id": 1642858,
-        "name": "Jambi City",
+        "name": "Jambi",
         "state": "",
         "country": "ID",
         "coord": {
@@ -9141,7 +9141,7 @@
     },
     {
         "id": 1642907,
-        "name": "Daerah Khusus Ibukota Jakarta",
+        "name": "Jakarta",
         "state": "",
         "country": "ID",
         "coord": {
@@ -14021,7 +14021,7 @@
     },
     {
         "id": 1958070,
-        "name": "North Maluku",
+        "name": "Maluku Utara",
         "state": "",
         "country": "ID",
         "coord": {
@@ -43871,7 +43871,7 @@
     },
     {
         "id": 7910925,
-        "name": "Kota Ternate",
+        "name": "Ternate",
         "state": "",
         "country": "ID",
         "coord": {
@@ -65891,7 +65891,7 @@
     },
     {
         "id": 8224624,
-        "name": "City of Balikpapan",
+        "name": "Balikpapan",
         "state": "",
         "country": "ID",
         "coord": {
