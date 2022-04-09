@@ -16,7 +16,6 @@ class HomeController extends GetxController {
   var province = 'none'.obs;
   var city = 'none'.obs;
   int? cityID;
-  String iconUrl = 'http://openweathermap.org/img/wn/10d@2x.png';
 
   late TextEditingController user;
 
@@ -38,7 +37,7 @@ class HomeController extends GetxController {
 
       forecast = ForecastWeather.fromJson(json.decode(response.body));
     } catch (e) {
-      throw Exception('Data tidak ditemukan');
+      throw Exception(e);
     }
   }
 

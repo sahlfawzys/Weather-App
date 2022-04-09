@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:weather_app/app/routes/app_pages.dart';
 import 'package:weather_app/widgets/big_text.dart';
 
+import '../../../../widgets/small_text.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -93,7 +94,6 @@ class HomeView extends GetView<HomeController> {
                                 onTimeout: () {
                                   Get.defaultDialog(
                                     title: 'Connection timeout',
-                                    middleText: '',
                                   );
                                 },
                               );
@@ -118,6 +118,7 @@ class HomeView extends GetView<HomeController> {
                                         text: 'Data not found',
                                         size: 35,
                                       ),
+                                      
                                     ],
                                   ),
                                 ),
