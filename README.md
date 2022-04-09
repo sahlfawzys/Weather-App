@@ -1,16 +1,21 @@
 # weather_app
 
-A new Flutter project.
+Nama    : Sahl Fawzy Sutopo
+Kelas   : Flutter
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Aplikasi dibuat menggunakan Getx state management. 
 
-A few resources to get you started if this is your first Flutter project:
+icon dan gambar    :
+- [Flutter Icon](www.fluttericon.com)
+- [SVG repo](www.svgrepo.com)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+API :
+- [Open Weather Map](openweathermap.org)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Aplikasi    :
+- [Weather APK](https://drive.google.com/file/d/1Dpq4e3E6-2opr9cNBhxwUGLkZF7ibFA2/view?usp=sharing)
+
+Demo Aplikasi   :
+- [Demo App](https://drive.google.com/file/d/1DlUsJGD_QneWrBz4-H9ox3G9CeU8xmO-/view?usp=sharing)
