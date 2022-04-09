@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 import 'package:weather_app/app/data/models/city_list_model.dart';
 import 'package:weather_app/app/data/models/regions_model.dart';
@@ -17,32 +18,32 @@ class HomeController extends GetxController {
   int? cityID;
   String iconUrl = 'http://openweathermap.org/img/wn/10d@2x.png';
 
-  late TextEditingController textProvince;
+  late TextEditingController user;
 
   List<String> provinceList = [];
   List<String> cityList = [];
   List<Regions> regions = [];
   List<CityList> cityIDList = [];
+  List<List<Lists>> weekList = [];
 
   ForecastWeather forecast = ForecastWeather();
 
   Future<void> getDataWeather() async {
-    String url_f =
-        'http://api.openweathermap.org/data/2.5/forecast?id=${cityID.toString()}&appid=a8284860c202f01eebb3f9dbad57f0e5&units=metric';
     try {
-      final response = await http.get(Uri.parse(url_f));
-      print('Data imported');
+      getCityID();
+      String url =
+          'http://api.openweathermap.org/data/2.5/forecast?id=${cityID.toString()}&appid=a8284860c202f01eebb3f9dbad57f0e5&units=metric';
+
+      final response = await http.get(Uri.parse(url));
 
       forecast = ForecastWeather.fromJson(json.decode(response.body));
-      print(forecast.list![0].main!.temp);
-      print(forecast.list![0].weather![0].main);
     } catch (e) {
-      print(e);
+      throw Exception('Data tidak ditemukan');
     }
   }
 
   Future<void> loadJsonDataRegion() async {
-    var jsonText = await rootBundle.loadString('models/regions.json');
+    var jsonText = await rootBundle.loadString('assets/models/regions.json');
     var data = json.decode(jsonText);
     if (data != null) {
       regions = <Regions>[];
@@ -53,7 +54,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> loadJsonDataCityID() async {
-    var jsonText = await rootBundle.loadString('models/city_id.json');
+    var jsonText = await rootBundle.loadString('assets/models/city_id.json');
     var data = json.decode(jsonText);
     if (data != null) {
       cityIDList = <CityList>[];
@@ -101,6 +102,21 @@ class HomeController extends GetxController {
     }
   }
 
+  void addWeekList() {
+    weekList.clear();
+    List<Lists> dayList = [];
+    var day =
+        DateFormat.EEEE().format(DateTime.parse(forecast.list![0].dtTxt!));
+    for (Lists element in forecast.list!) {
+      if (DateFormat.EEEE().format(DateTime.parse(element.dtTxt!)) != day) {
+        weekList.add(dayList);
+        day = DateFormat.EEEE().format(DateTime.parse(element.dtTxt!));
+        dayList = [];
+      }
+      dayList.add(element);
+    }
+  }
+
   Future<void> initState() async {
     await loadJsonDataRegion();
     await loadJsonDataCityID();
@@ -109,13 +125,13 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    textProvince = TextEditingController();
+    user = TextEditingController();
     super.onInit();
   }
 
   @override
   void onClose() {
-    textProvince.dispose();
+    user.dispose();
     super.onClose();
   }
 }
