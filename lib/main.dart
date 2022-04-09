@@ -17,23 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     );
-    // return FutureBuilder(
-    //   future: controller.initState(),
-    //   builder: (context, snapshot) {
-    //     if (snapshot.connectionState == ConnectionState.done) {
-    //       print('beres');
-    //       return GetMaterialApp(
-    //         title: "Application",
-    //         initialRoute: AppPages.INITIAL,
-    //         getPages: AppPages.routes,
-    //       );
-    //     }
-    //     return Center(child: CircularProgressIndicator());
-    //   },
-    // );
   }
 }

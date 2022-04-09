@@ -5,14 +5,18 @@ class textIcon extends StatelessWidget {
   IconData icon;
   String iconLabel;
   String text;
+  String idImg;
   int size;
-  textIcon(
-      {Key? key,
-      required this.icon,
-      required this.iconLabel,
-      required this.text,
-      this.size = 0})
-      : super(key: key);
+  bool isIcon;
+  textIcon({
+    Key? key,
+    required this.iconLabel,
+    required this.text,
+    this.icon = Icons.error,
+    this.size = 0,
+    this.isIcon = true,
+    this.idImg = '',
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +24,20 @@ class textIcon extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
-          icon,
-          color: Colors.white,
-          size: 24.0 + 1.5 * size,
-        ),
+        isIcon
+            ? Icon(
+                icon,
+                color: Colors.white,
+                size: 24.0 + 1.5 * size,
+              )
+            : Container(
+                height: 40,
+                width: 40,
+                child: Image.network(
+                  'http://openweathermap.org/img/wn/${idImg}@2x.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
         SizedBox(
           height: 10,
         ),

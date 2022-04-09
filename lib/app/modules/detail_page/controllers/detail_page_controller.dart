@@ -8,7 +8,7 @@ import 'package:weather_app/app/data/models/forecast_weather_model.dart';
 import '../../../data/models/forecast_weather_model.dart';
 
 class DetailPageController extends GetxController {
-  String user = (Get.arguments[0] == '') ? 'anonim' : Get.arguments[0];
+  String user = Get.arguments[0];
   ForecastWeather forecast = Get.arguments[1];
   List<List<Lists>> weekList = Get.arguments[2];
   String iconUrl = 'http://openweathermap.org/img/wn/10d@2x.png';
@@ -33,6 +33,20 @@ class DetailPageController extends GetxController {
         dayList = [];
       }
       dayList.add(element);
+    }
+  }
+
+  String greet(int hour) {
+    if (hour < 6) {
+      return 'Malam';
+    } else if (hour < 12) {
+      return 'Pagi';
+    } else if (hour < 15) {
+      return 'Siang';
+    } else if (hour < 18) {
+      return 'Sore';
+    } else {
+      return 'Malam';
     }
   }
 }
