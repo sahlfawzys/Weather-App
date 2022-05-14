@@ -6,6 +6,7 @@ import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/apikey.dart';
 
 import 'package:weather_app/app/data/models/city_list_model.dart';
 import 'package:weather_app/app/data/models/regions_model.dart';
@@ -31,7 +32,7 @@ class HomeController extends GetxController {
     try {
       getCityID();
       String url =
-          'http://api.openweathermap.org/data/2.5/forecast?id=${cityID.toString()}&appid=a8284860c202f01eebb3f9dbad57f0e5&units=metric';
+          'http://api.openweathermap.org/data/2.5/forecast?id=${cityID.toString()}&appid=${APIKEY.weather}&units=metric';
 
       final response = await http.get(Uri.parse(url));
 
