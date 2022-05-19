@@ -1,11 +1,9 @@
-# weather_app
+# Weather App
 
 Nama    : Sahl Fawzy Sutopo
 Kelas   : Flutter
 
-## Getting Started
-
-Aplikasi dibuat menggunakan Getx state management. 
+Aplikasi dibuat menggunakan Flutter 2 dengan Getx state management. 
 
 icon dan gambar    :
 - [Flutter Icon](www.fluttericon.com)
@@ -19,3 +17,7 @@ Aplikasi    :
 
 Demo Aplikasi   :
 - [Demo App](https://drive.google.com/file/d/1DlUsJGD_QneWrBz4-H9ox3G9CeU8xmO-/view?usp=sharing)
+
+Interface Aplikasi  :
+
+![mainpage.jpg](https://github.com/sahlfawzys/Weather-App/blob/master/display_app/MainPage.jpg) ![detailpage0.jpg](https://github.com/sahlfawzys/Weather-App/blob/master/display_app/DetailPage0.jpg) ![detailpage1.jpg](https://github.com/sahlfawzys/Weather-App/blob/master/display_app/DetailPage1.jpg)
